@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pothole Pulse Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand-card panel">
+        <p class="eyebrow">Smart City Monitor</p>
+        <h1>Pothole Pulse</h1>
+        <p class="lede">
+          AI-assisted road damage reporting with live map tracking, field image validation, and report verification.
+        </p>
+        <div class="hero-strip">
+          <span class="hero-chip chip-red">Reported</span>
+          <span class="hero-chip chip-green">Fixed</span>
+          <span class="hero-chip chip-blue">Verified</span>
+        </div>
+      </div>
+
+      <section class="panel upload-panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Quick Report</p>
+            <h2>Upload Evidence</h2>
+          </div>
+        </div>
+
+        <label class="upload-dropzone" for="imageInput">
+          <input type="file" id="imageInput" accept="image/*" />
+          <span class="upload-icon">+</span>
+          <span class="upload-title">Drop an image or click to browse</span>
+          <span class="upload-subtitle">JPG, PNG or JPEG from the reporting device</span>
+        </label>
+
+        <div class="preview-card hidden" id="previewCard">
+          <img id="imagePreview" alt="Selected report preview" />
+          <div class="preview-meta">
+            <span id="fileName">No file selected</span>
+            <span id="fileMeta">Waiting for upload</span>
+          </div>
+        </div>
+
+        <button class="primary-button" id="uploadButton" type="button">Report Pothole</button>
+      </section>
+
+      <section class="panel status-panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">System Status</p>
+            <h2>Live Feedback</h2>
+          </div>
+          <span class="status-pill idle" id="statusPill">Idle</span>
+        </div>
+        <p id="statusMessage">Choose an image and report it from the field.</p>
+      </section>
+
+      <section class="panel recent-panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Recent Activity</p>
+            <h2>Latest Reports</h2>
+          </div>
+        </div>
+        <div class="recent-list" id="recentReports"></div>
+      </section>
+    </aside>
+
+    <main class="mainboard">
+      <section class="topbar">
+        <div>
+          <p class="eyebrow">Operations Dashboard</p>
+          <h2>Road Surface Intelligence Map</h2>
+        </div>
+        <div class="legend">
+          <span><i class="legend-dot red"></i>Reported</span>
+          <span><i class="legend-dot green"></i>Fixed</span>
+          <span><i class="legend-dot blue"></i>Verified</span>
+        </div>
+      </section>
+
+      <section class="stats-grid">
+        <article class="stat-card">
+          <span class="stat-label">Total Reports</span>
+          <strong id="totalReports">0</strong>
+        </article>
+        <article class="stat-card">
+          <span class="stat-label">Verified</span>
+          <strong id="verifiedReports">0</strong>
+        </article>
+        <article class="stat-card">
+          <span class="stat-label">Fixed</span>
+          <strong id="fixedReports">0</strong>
+        </article>
+        <article class="stat-card">
+          <span class="stat-label">Open Cases</span>
+          <strong id="openReports">0</strong>
+        </article>
+      </section>
+
+      <section class="map-panel panel">
+        <div class="map-panel-header">
+          <div>
+            <p class="eyebrow">Geo View</p>
+            <h2>Live Pothole Coverage</h2>
+          </div>
+          <span class="map-caption">Click a marker to inspect image evidence and bounding boxes.</span>
+        </div>
+        <div class="map-stage">
+          <button class="map-locate-button" id="locateButton" type="button" aria-label="Show my current location">
+            <span class="locate-crosshair"></span>
+          </button>
+          <div id="map"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>

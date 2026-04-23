@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+runs/
+temp/
+.env
+*.pt
+database.db

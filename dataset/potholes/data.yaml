@@ -1,0 +1,6 @@
+path: /Users/shubham/Desktop/projects/pothole detection system/dataset/potholes
+train: train/images
+val: val/images
+
+nc: 1
+names: ["pothole"]
